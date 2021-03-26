@@ -79,13 +79,33 @@ correccionl2.place(x=10, y=570)
 
 rmrb = Entry(root)
 rmrb.place(x=300, y=650, width=25)
+rmrc = Entry(root)
+rmrc.place(x=325, y=650, width=160)
+
 
 def calculo():
-    rmr = int(p1.get())+int(p2.get())+int(p3.get())+int(p4.get())+int(p5.get())+int(p6.get())+int(p7.get())+int(p8.get())+int(p9.get())+int(correccion.get())
+    global rmr
+    rmr=int(p1.get()) + int(p2.get()) + int(p3.get()) + int(p4.get()) + int(p5.get()) + int(p6.get()) + int(p7.get()) + int(p8.get()) + int(p9.get()) + int(correccion.get())
     rmrb.insert(0,rmr)
-   
+    if rmr>=81:
+        rmrc.insert(0, "Clase I - Calidad muy buena")
+    elif rmr<=80 and rmr>=61:
+        rmrc.insert(0,"Clase II - Calidad buena")
+    elif rmr<=60 and rmr>=41:
+        rmrc.insert(0,"Clase III - Calidad media")
+    elif rmr<=40 and rmr>=21:
+        rmrc.insert(0,"Clase IV - Calidad mala")
+    else:
+        rmrc.insert(0,"Clase V - Calidad muy mala")
+    
+def borrar():
+    rmrb.delete(0,END)
+    rmrc.delete(0,END)
 
 calcular = Button(root, text="Calcular RMR", padx=10, pady=10, command= calculo)
 calcular.place(x=120, y=650)
+
+borrar = Button(root, text="Borrar", padx=10, pady=10, command= borrar)
+borrar.place(x=125, y=700)
 
 root.mainloop() 
