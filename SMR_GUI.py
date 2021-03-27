@@ -1,4 +1,5 @@
-from tkinter import *
+from tkinter import * 
+import tkinter as tk
 from PIL import ImageTk, Image
 from math import *
 
@@ -10,11 +11,11 @@ intro = Label(root,text="Ingresar el RMRb y luego indicar la orientación de la 
 intro.place(x=10, y=10)
 
 #Ingresar los parámetros del macizo y talud
-rmr=Label(root, text="Ingrese RMRb")
+rmr=Label(root, text="RMRb")
 rmr.place(x=10, y=40)
 
 rmrb=Entry(root)
-rmrb.place(x=100, y=40, width=22)
+rmrb.place(x=380, y=40, width=30)
 
 dir_disc = Label(root, text="Dirección de inclinación de la familia de discontinuidades")
 dir_disc.place(x=10, y=80)
@@ -46,8 +47,13 @@ incl_talud.place(x=10, y=280)
 incl_talude = Entry(root)
 incl_talude.place(x=380, y=280, width=30)
 
+exc = Label(root, text="Método de excavación")
+exc.place(x=10, y=320)
+variable = StringVar()
+exce = OptionMenu(root, "variable", "Talud natural", "Precorte", "Voladura suave", "Voladura o mecánico", "Voladura deficiente").place(x=380, y=320)
+
 nota = Label(root, text="* solo para rotura en cuña", font=("","7", "bold"))
-nota.place(x=10, y=320)
+nota.place(x=10, y=360)
 
 #Flechas y botones
 canvas = Canvas(root)
