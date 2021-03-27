@@ -54,15 +54,22 @@ canvas = Canvas(root)
 canvas.place(x=425, y=70)
 canvas.create_line(0, 120, 50, 120, arrow=LAST)
 
+f1 = Label(root, text="F1=").place(x=650, y = 100)
+f2 = Label(root, text="F2=").place(x=650, y = 140)
+f3 = Label(root, text="F3=").place(x=650, y = 180)
+f4 = Label(root, text="F4=").place(x=650, y = 220)
+smr = Label(root, text="SMR=", font = ("", "10", "bold")).place(x=640, y = 260)
+f1_ = Entry(root)
+f1_.place(x=700, y = 100, width=30)
 
 def rot_plana():
-    f1 = Label(root, text="F1=").place(x=650, y = 100)
-    f2 = Label(root, text="F2=").place(x=650, y = 140)
-    f3 = Label(root, text="F3=").place(x=650, y = 180)
-    f4 = Label(root, text="F4=").place(x=650, y = 220)
-    smr = Label(root, text="SMR=", font = ("", "10", "bold")).place(x=640, y = 260)
-
+    f1r = round((1 - sin (abs(int(dir_disce.get())-int(dir_talude.get()))))**2,2)
+    f1_.insert(0,f1r)
     return
+
+
+def clear():
+    f1_.delete(0,END)
 
 plana = Button(root, text="Rotura plana", command = rot_plana)
 plana.place(x=500, y=140)
@@ -73,7 +80,8 @@ vuelco.place(x=500, y=180)
 cuña = Button(root, text="Rotura en cuña")
 cuña.place(x=500, y=220)
 
-
+borrar = Button(root, text="Nuevo cálculo", command = clear)
+borrar.place(x=600, y=400)
 
 
 
