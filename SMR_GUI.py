@@ -107,8 +107,8 @@ def rot_plana():
     d = int(incl_talude.get())
     f3r = round(c-d,2)
     f3_.insert(0,f3r)
-    smr__ = int(rmrb.get()) + (int(f1r)*int(f2r)*int(f3r))+int(f4_.get())
-    smr_.insert(0,smr__)
+    smr_p = int(rmrb.get()) + (f1r)*(f2r)*(f3r) +int(f4_.get())
+    smr_.insert(0,smr_p)
     return
 
 def rot_vuelco():
@@ -122,8 +122,8 @@ def rot_vuelco():
     d = int(incl_talude.get())
     f3rv = round(c+d,2)
     f3_.insert(0,f3rv)
-    smr___ = int(rmrb.get()) + (int(f1rv)*int(f2rv)*int(f3rv))+int(f4_.get())
-    smr_.insert(0,smr___)
+    smr_v = int(rmrb.get()) + (f1rv)*(f2rv)*(f3rv)+int(f4_.get())
+    smr_.insert(0,smr_v)
     return
 
 def rot_cuña():
@@ -137,17 +137,22 @@ def rot_cuña():
     d = int(incl_talude.get())
     f3rc = round(c-d,2)
     f3_.insert(0,f3rc)
-    smr___ = int(rmrb.get()) + (int(f1rc)*int(f2rc)*int(f3rc))+int(f4_.get())
-    smr_.insert(0,smr___)
+    smr_c = int(rmrb.get()) + (f1rc)*(f2rc)*(f3rc)+int(f4_.get())
+    smr_.insert(0,smr_c)
     return
 
 
 def clear():
     f1_.delete(0,END)
+    f1_.forget()
     f2_.delete(0,END)
+    f2_.forget()
     f3_.delete(0,END)
+    f3_.forget()
     f4_.delete(0,END)
+    f4_.forget()
     smr_.delete(0,END)
+    smr_.forget()
 
 plana = Button(root, text="Rotura plana", command = rot_plana)
 plana.place(x=500, y=140)
