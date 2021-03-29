@@ -1,6 +1,7 @@
 from tkinter import * 
 import tkinter as tk
 from PIL import ImageTk, Image
+import math
 from math import *
 
 root = Tk()
@@ -69,7 +70,8 @@ f1_ = Entry(root)
 f1_.place(x=700, y = 100, width=30)
 
 def rot_plana():
-    f1r = round((1 - sin (abs(int(dir_disce.get())-int(dir_talude.get()))))**2,2)
+    a = math.radians(int(dir_disce.get())-int(dir_talude.get()))
+    f1r = round(((1 - sin (abs(a))))**2,2)
     f1_.insert(0,f1r)
     return
 
