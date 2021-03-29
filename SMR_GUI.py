@@ -48,16 +48,26 @@ incl_talud.place(x=10, y=280)
 incl_talude = Entry(root)
 incl_talude.place(x=380, y=280, width=30)
 
+variable = StringVar()
+variable.set("Seleccionar")
+variable_ = variable.get()
+
+def exca():
+    if variable_ == "Talud natural":
+        f4_.insert(0, "-25")
+    return
+
 exc = Label(root, text="Método de excavación")
 exc.place(x=10, y=320)
-variable = StringVar()
-exce = OptionMenu(root, "variable", "Talud natural", "Precorte", "Voladura suave", "Voladura o mecánico", "Voladura deficiente").place(x=380, y=320)
+exce = OptionMenu(root, variable, "Talud natural", "Precorte", "Voladura suave", "Voladura o mecánico", "Voladura deficiente", command=exca).place(x=380, y=320)
+
 
 nota = Label(root, text="* solo para rotura en cuña", font=("","7", "bold"))
 nota.place(x=10, y=360)
 
+
 #Flechas y botones
-canvas = Canvas(root)
+canvas = Canvas(root, height=50)
 canvas.place(x=425, y=70)
 canvas.create_line(0, 120, 50, 120, arrow=LAST)
 
@@ -68,16 +78,37 @@ f4 = Label(root, text="F4=").place(x=650, y = 220)
 smr = Label(root, text="SMR=", font = ("", "10", "bold")).place(x=640, y = 260)
 f1_ = Entry(root)
 f1_.place(x=700, y = 100, width=30)
+f2_ = Entry(root)
+f2_.place(x=700, y = 140, width=30)
+f3_ = Entry(root)
+f3_.place(x=700, y = 180, width=30)
+f4_ = Entry(root)
+f4_.place(x=700, y = 220, width=30)
+smr_ = Entry(root)
+smr_.place(x=700, y = 260, width=30)
 
 def rot_plana():
     a = math.radians(int(dir_disce.get())-int(dir_talude.get()))
-    f1r = round(((1 - sin (abs(a))))**2,2)
+    f1r = round((1 - sin (abs(a)))**2,2)
     f1_.insert(0,f1r)
+    b = math.radians(int(incl_disce.get()))
+    f2r= round((tan(b))**2,2)
+    f2_.insert(0,f2r)
+    c = int(incl_disce.get())
+    d = int(incl_talude.get())
+    f3r = round(c-d,2)
+    f3_.insert(0,f3r)
+    if variable_ == "Talud natural":
+        f4_.insert(0, "-25")
+    
     return
-
 
 def clear():
     f1_.delete(0,END)
+    f2_.delete(0,END)
+    f3_.delete(0,END)
+    f4_.delete(0,END)
+    smr_.delete(0,END)
 
 plana = Button(root, text="Rotura plana", command = rot_plana)
 plana.place(x=500, y=140)
