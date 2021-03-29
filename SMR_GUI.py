@@ -1,3 +1,4 @@
+import tkinter
 from tkinter import * 
 import tkinter as tk
 from PIL import ImageTk, Image
@@ -8,7 +9,7 @@ root = Tk()
 root.title("SMR (Romana, 2001)")
 root.geometry("800x500")
 
-intro = Label(root,text="Ingresar el RMRb y luego indicar la orientación de la familia de discontinuidad y talud. Calcular el SMR para cada familia y adoptar el menor valor.", font=("", "8", "bold"))
+intro = Label(root,text="Ingresar todos los valores a la izquierda (los items con * solo si es rotura por cuña).Luego, elegir el modo de deslizamiento.", font=("", "8", "bold"))
 intro.place(x=10, y=10)
 
 #Ingresar los parámetros del macizo y talud
@@ -52,14 +53,22 @@ variable = StringVar()
 variable.set("Seleccionar")
 variable_ = variable.get()
 
-def exca():
+def exca(variable_):
     if variable_ == "Talud natural":
-        f4_.insert(0, "-25")
+        f4_.insert(0, "15")
+    if variable_ == "Precorte":
+        f4_.insert(0, "10")
+    if variable_ == "Voladura suave":
+        f4_.insert(0, "8")
+    if variable_ == "Voladura o mecánica":
+        f4_.insert(0, "0")
+    if variable_ == "Voladura deficiente":
+        f4_.insert(0, "-8")
     return
 
 exc = Label(root, text="Método de excavación")
 exc.place(x=10, y=320)
-exce = OptionMenu(root, variable, "Talud natural", "Precorte", "Voladura suave", "Voladura o mecánico", "Voladura deficiente", command=exca).place(x=380, y=320)
+exce = OptionMenu(root, variable, "Talud natural", "Precorte", "Voladura suave", "Voladura o mecánica", "Voladura deficiente", command=exca).place(x=320, y=320)
 
 
 nota = Label(root, text="* solo para rotura en cuña", font=("","7", "bold"))
@@ -67,7 +76,7 @@ nota.place(x=10, y=360)
 
 
 #Flechas y botones
-canvas = Canvas(root, height=50)
+canvas = Canvas(root)
 canvas.place(x=425, y=70)
 canvas.create_line(0, 120, 50, 120, arrow=LAST)
 
@@ -98,10 +107,40 @@ def rot_plana():
     d = int(incl_talude.get())
     f3r = round(c-d,2)
     f3_.insert(0,f3r)
-    if variable_ == "Talud natural":
-        f4_.insert(0, "-25")
-    
+    smr__ = int(rmrb.get()) + (int(f1r)*int(f2r)*int(f3r))+int(f4_.get())
+    smr_.insert(0,smr__)
     return
+
+def rot_vuelco():
+    a = math.radians(int(dir_disce.get())-int(dir_talude.get())-1.57)
+    f1rv = round((1 - sin (abs(a)))**2,2)
+    f1_.insert(0,f1rv)
+    b = math.radians(int(incl_disce.get()))
+    f2rv= round((tan(b))**2,2)
+    f2_.insert(0,f2rv)
+    c = int(incl_disce.get())
+    d = int(incl_talude.get())
+    f3rv = round(c+d,2)
+    f3_.insert(0,f3rv)
+    smr___ = int(rmrb.get()) + (int(f1rv)*int(f2rv)*int(f3rv))+int(f4_.get())
+    smr_.insert(0,smr___)
+    return
+
+def rot_cuña():
+    a = math.radians(int(dir_intersecce.get())-int(dir_talude.get())-1.57)
+    f1rc = round((1 - sin (abs(a)))**2,2)
+    f1_.insert(0,f1rc)
+    b = math.radians(int(incl_intersecce.get()))
+    f2rc= round((tan(b))**2,2)
+    f2_.insert(0,f2rc)
+    c = int(incl_intersecce.get())
+    d = int(incl_talude.get())
+    f3rc = round(c-d,2)
+    f3_.insert(0,f3rc)
+    smr___ = int(rmrb.get()) + (int(f1rc)*int(f2rc)*int(f3rc))+int(f4_.get())
+    smr_.insert(0,smr___)
+    return
+
 
 def clear():
     f1_.delete(0,END)
@@ -113,15 +152,13 @@ def clear():
 plana = Button(root, text="Rotura plana", command = rot_plana)
 plana.place(x=500, y=140)
 
-vuelco = Button(root, text="Vuelco")
+vuelco = Button(root, text="Vuelco", command= rot_vuelco)
 vuelco.place(x=500, y=180)
 
-cuña = Button(root, text="Rotura en cuña")
+cuña = Button(root, text="Rotura en cuña", command= rot_cuña)
 cuña.place(x=500, y=220)
 
 borrar = Button(root, text="Nuevo cálculo", command = clear)
 borrar.place(x=600, y=400)
-
-
 
 root.mainloop()
