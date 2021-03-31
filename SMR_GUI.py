@@ -68,7 +68,7 @@ def exca(variable_):
 
 exc = Label(root, text="Método de excavación")
 exc.place(x=10, y=320)
-exce = OptionMenu(root, variable, "Talud natural", "Precorte", "Voladura suave", "Voladura o mecánica", "Voladura deficiente", command=exca).place(x=320, y=320)
+exce = OptionMenu(root, variable, "Talud natural", "Precorte", "Voladura suave", "Voladura o mecánica", "Voladura deficiente", command=exca).place(x=280, y=320)
 
 
 nota = Label(root, text="* solo para rotura en cuña", font=("","7", "bold"))
@@ -98,7 +98,7 @@ smr_.place(x=700, y = 260, width=30)
 
 def rot_plana():
     a = math.radians(int(dir_disce.get())-int(dir_talude.get()))
-    f1r = round((1 - sin (abs(a)))**2,2)
+    f1r = round((1 - sin (abs(a)))**2,3)
     f1_.insert(0,f1r)
     b = math.radians(int(incl_disce.get()))
     f2r= round((tan(b))**2,2)
@@ -108,7 +108,8 @@ def rot_plana():
     f3r = round(c-d,2)
     f3_.insert(0,f3r)
     smr_p = int(rmrb.get()) + (f1r)*(f2r)*(f3r) +int(f4_.get())
-    smr_.insert(0,smr_p)
+    smr_pm = min(smr_p, 100)
+    smr_.insert(0,smr_pm)
     return
 
 def rot_vuelco():
@@ -122,8 +123,9 @@ def rot_vuelco():
     d = int(incl_talude.get())
     f3rv = round(c+d,2)
     f3_.insert(0,f3rv)
-    smr_v = int(rmrb.get()) + (f1rv)*(f2rv)*(f3rv)+int(f4_.get())
-    smr_.insert(0,smr_v)
+    smr_v = int(rmrb.get()) + (f1rv)*(f2rv)*(f3rv) + int(f4_.get())
+    smr_vm = min(smr_v, 100)
+    smr_.insert(0,smr_vm)
     return
 
 def rot_cuña():
@@ -138,7 +140,8 @@ def rot_cuña():
     f3rc = round(c-d,2)
     f3_.insert(0,f3rc)
     smr_c = int(rmrb.get()) + (f1rc)*(f2rc)*(f3rc)+int(f4_.get())
-    smr_.insert(0,smr_c)
+    smr_cm = min(smr_c, 100)
+    smr_.insert(0,smr_cm)
     return
 
 
