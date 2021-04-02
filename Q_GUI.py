@@ -2,11 +2,11 @@ from tkinter import *
 from PIL import ImageTk, Image
 
 root = Tk()
-root.title("RMR (Bienawski, 1989)")
+root.title("Q (Barton, 1974)")
 root.geometry("1275x1200")
 
 #Introducción al programa
-label = Label(root, text="Para clasificar el macizo rocoso según la clasificación RMR, utilizar la tabla de la derecha para")
+label = Label(root, text="Para clasificar el macizo rocoso según la clasificación Q, utilizar la tabla de la derecha para")
 label2 = Label(root, text="asignar un puntaje a cada parámetro. Luego, utilizar la corrección por tipo de obra y")
 label3 = Label(root, text="orientación de las discontinuidades, de ser necesario.")
 label.place(x=0,y=0)
