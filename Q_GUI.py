@@ -98,7 +98,7 @@ def calculo():
     else:
         rmrc.insert(0,"Clase V - Calidad muy mala")
     
-def borrar():
+def borrar(): #borrar contenido para nuevo calculo
     rmrb.delete(0,END)
     rmrc.delete(0,END)
 
