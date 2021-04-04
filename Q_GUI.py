@@ -27,7 +27,7 @@ rmr_1.place(x=500, y=0)
 
 p1 = Entry(root)
 p1.place(x=300, y=100, width=25)
-p1l = Label(root,text="Resistencia de la matriz rocosa (MPa)")
+p1l = Label(root,text="Jr")
 p1l.place(x=50, y=100)
 
 p2 = Entry(root)
@@ -37,55 +37,33 @@ p2l.place(x=125, y=150)
 
 p3 = Entry(root)
 p3.place(x=300, y=200, width=25)
-p3l = Label(root,text="Separación entre discontinuidades (m)")
+p3l = Label(root,text="Ja")
 p3l.place(x=75, y=200)
 
 p4 = Entry(root)
 p4.place(x=300, y=250, width=25)
-p4l = Label(root,text="Persistencia (m)")
+p4l = Label(root,text="Jw")
 p4l.place(x=125, y=250)
 
 p5 = Entry(root)
 p5.place(x=300, y=300, width=25)
-p5l = Label(root,text="Abertura (mm)")
+p5l = Label(root,text="Jn")
 p5l.place(x=125, y=300)
 
 p6 = Entry(root)
 p6.place(x=300, y=350, width=25)
-p6l = Label(root,text="Rugosidad")
+p6l = Label(root,text="SRF")
 p6l.place(x=125, y=350)
 
-p7 = Entry(root)
-p7.place(x=300, y=400, width=25)
-p7l = Label(root,text="Relleno")
-p7l.place(x=125, y=400)
-
-p8 = Entry(root)
-p8.place(x=300, y=450, width=25)
-p8l = Label(root,text="Alteración")
-p8l.place(x=125, y=450)
-
-p9 = Entry(root)
-p9.place(x=300, y=500, width=25)
-p9l = Label(root,text="Agua freática")
-p9l.place(x=125, y=500)
-
-correccion = Entry(root)
-correccion.place(x=300, y=550, width=25)
-correccionl = Label(root,text="Corrección por orientación de las discontinuidades")
-correccionl.place(x=10, y=550)
-correccionl2 = Label(root,text="(si no se corrige, poner 0)")
-correccionl2.place(x=10, y=570)
-
-rmrb = Entry(root)
-rmrb.place(x=300, y=650, width=25)
-rmrc = Entry(root)
-rmrc.place(x=325, y=650, width=160)
+q = Entry(root)
+q.place(x=300, y=650, width=25)
+q_ = Entry(root)
+q_.place(x=325, y=650, width=160)
 
 
 def calculo():
-    global rmr
-    rmr=int(p1.get()) + int(p2.get()) + int(p3.get()) + int(p4.get()) + int(p5.get()) + int(p6.get()) + int(p7.get()) + int(p8.get()) + int(p9.get()) + int(correccion.get())
+    global q
+    q=int(p1.get()) + int(p2.get()) + int(p3.get()) + int(p4.get()) + int(p5.get()) + int(p6.get()) + int(p7.get()) + int(p8.get()) + int(p9.get()) + int(correccion.get())
     rmrb.insert(0,rmr)
     if rmr>=81:
         rmrc.insert(0, "Clase I - Calidad muy buena")
