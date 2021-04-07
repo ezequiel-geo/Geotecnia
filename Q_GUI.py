@@ -3,7 +3,7 @@ from PIL import ImageTk, Image
 
 root = Tk()
 root.title("Q (Barton, 1974)")
-root.geometry("750x750")
+root.geometry("725x400")
 
 #Introducción al programa
 label = Label(root, text="Clasificar del macizo rocoso según la clasificación Q. Clickear en los botones ! para información:", font=("", "12"))
@@ -112,17 +112,39 @@ srf__ = Button(root, text="!", width=5, command=SRF)
 srf__.place(x=120, y=247)
 
 def Q():
-    a = int(rqd_.get())
-    b = int(jn_.get())
-    c = int(ja_.get())
-    d = int(jr_.get())
-    e = int(jw_.get())
-    f = int(srf_.get())
+    a = float(rqd_.get())
+    b = float(jn_.get())
+    c = float(ja_.get())
+    d = float(jr_.get())
+    e = float(jw_.get())
+    f = float(srf_.get())
     g=(a/b)*(d/c)*(e/f)
+    h=round(g,2)
     global q
     q = Entry(root, width=10)
     q.place(x=120, y=300)
-    q.insert(0, g)
+    q.insert(0, h)
+    global clase
+    clase = Entry(root, width=30)
+    clase.place(x=200, y=300)
+    if h>=400:
+        clase.insert(0, "roca excepcionalmente buena")
+    elif h<400 and h>=100:
+        clase.insert(0,"roca extrenadamente buena")
+    elif h<100 and h>=40:
+        clase.insert(0,"roca muy buena")
+    elif h<40 and h>=10:
+        clase.insert(0,"roca buena")
+    elif h<10 and h>=4:
+        clase.insert(0,"roca media")
+    elif h<4 and h>=1:
+        clase.insert(0,"roca mala")
+    elif h<1 and h>=0.1:
+        clase.insert(0,"roca muy mala")
+    elif h<0.1 and h>=0.01:
+        clase.insert(0,"roca extremadamente mala")
+    elif h<0.01 and h>=0.001:
+        clase.insert(0,"roca excepcionalmente mala")
     return
 
 q_= Button(root, text="Calcular Q", width=10, command=Q)
@@ -130,6 +152,7 @@ q_.place(x=30, y=295)
 
 def borrar():
     q.delete(0,END)
+    clase.delete(0, END)
 
 borrar = Button(root, text="Borrar", padx=5, pady=5, command= borrar)
 borrar.place(x=30, y=330)
