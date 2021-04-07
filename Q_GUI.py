@@ -3,11 +3,11 @@ from PIL import ImageTk, Image
 
 root = Tk()
 root.title("Q (Barton, 1974)")
-root.geometry("725x400")
+root.geometry("400x400+200+200")
 
 #Introducción al programa
-label = Label(root, text="Clasificar del macizo rocoso según la clasificación Q. Clickear en los botones ! para información:", font=("", "12"))
-label.place(x=0,y=0)
+label = Label(root, text="Clasificar del macizo rocoso según la clasificación Q:", font=("", "12"))
+label.place(x=10,y=0)
 
 
 #Parámetros
@@ -31,9 +31,9 @@ def Jn():
 def Ja():
     ja1=Toplevel()
     ja1.title("Ja")
-    ja1.geometry("725x325+750+50")
+    ja1.geometry("750x600+550+50")
     ja2= Image.open("ja.jpg")     
-    ja3 = ja2.resize((700, 300), Image.ANTIALIAS)
+    ja3 = ja2.resize((725, 575), Image.ANTIALIAS)
     ja4 = ImageTk.PhotoImage(ja3)
     ja5 = Label(ja1, image=ja4)
     ja5.pack()
@@ -43,9 +43,9 @@ def Ja():
 def Jr():
     jr1=Toplevel()
     jr1.title("Jr")
-    jr1.geometry("725x325+750+50")
+    jr1.geometry("725x475+650+50")
     jr2= Image.open("jr.jpg")     
-    jr3 = jr2.resize((700, 300), Image.ANTIALIAS)
+    jr3 = jr2.resize((700, 450), Image.ANTIALIAS)
     jr4 = ImageTk.PhotoImage(jr3)
     jr5 = Label(jr1, image=jr4)
     jr5.pack()
@@ -67,9 +67,9 @@ def Jw():
 def SRF():
     srf1=Toplevel()
     srf1.title("SRF")
-    srf1.geometry("725x325+750+50")
+    srf1.geometry("750x725+600+50")
     srf2= Image.open("srf.jpg")     
-    srf3 = srf2.resize((700, 300), Image.ANTIALIAS)
+    srf3 = srf2.resize((725, 700), Image.ANTIALIAS)
     srf4 = ImageTk.PhotoImage(srf3)
     srf5 = Label(srf1, image=srf4)
     srf5.pack()
