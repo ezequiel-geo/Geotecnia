@@ -1,4 +1,4 @@
-# Geo
+# GEO
 Herramientas geológicas y geotécnicas. Programas de aplicación geológica y geotécnica:
 
 1 - RMRb (CLI):  clasificación de macizos rocosos según el sistema de Bienwaski (1989), Rock Mass Rating (RMR).
