@@ -9,4 +9,6 @@ Herramientas geológicas y geotécnicas:
 
 4 - Q (GUI): Q, con interfaz gráfica.
 
-5 - Plot stereo: proyección estereográfica.
+5 - Plot stereo: ploteos de discontinuidades en proyecciones estereográficas.
+
+6 - Plot rosa: pleteos en diagramas de roseta.
