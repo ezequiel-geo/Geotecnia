@@ -12,3 +12,5 @@ Herramientas geológicas y geotécnicas:
 5 - Plot stereo: ploteos de discontinuidades en proyecciones estereográficas.
 
 6 - Plot rosa: pleteos en diagramas de roseta.
+
+7 - Criterio de Hoek y Brown: criterio de Hoek y Brown actualizado a la última versión.
