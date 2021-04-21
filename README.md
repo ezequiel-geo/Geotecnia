@@ -14,3 +14,5 @@ Herramientas geológicas y geotécnicas:
 6 - Plot rosa: pleteos en diagramas de roseta.
 
 7 - Criterio de Hoek y Brown: criterio de Hoek y Brown actualizado a la última versión.
+
+8 - Criterio de Barton para discontinuidades.
